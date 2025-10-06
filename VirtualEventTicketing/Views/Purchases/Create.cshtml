@@ -1,0 +1,43 @@
+@model VirtualEventTicketing.ViewModels.PurchaseVm
+
+@functions {
+    public object Items { get; }
+}
+@{
+    ViewData["Title"] = "Guest Purchase";
+}
+<h2>Guest Ticket Purchase</h2>
+<form method="post">
+    <fieldset>
+        <legend>Guest Info</legend>
+        <label>Name<input asp-for="GuestName" /></label>
+        <label>Email<input asp-for="GuestEmail" type="email" /></label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Tickets</legend>
+        <table class="grid">
+            <thead><tr><th>Event</th><th>Unit Price</th><th>Qty</th><th>Line Total</th></tr></thead>
+            <tbody>
+            @for (int i = 0; i < Model.Items.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @Model.Items[i].Title
+                        <input type="hidden" asp-for="Items[@i].EventId" />
+                        <input type="hidden" asp-for="Items[@i].Title" />
+                    </td>
+                    <td>$@Model.Items[i].UnitPrice<input type="hidden" asp-for="Items[@i].UnitPrice" /></td>
+                    <td><input asp-for="Items[@i].Quantity" type="number" min="1" /></td>
+                    <td>$@(Model.Items[i].UnitPrice * Model.Items[i].Quantity)</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <div class="total">Total: <strong>$@Model.Total</strong></div>
+    </fieldset>
+
+    <button class="btn" type="submit">Confirm Purchase</button>
+    <a class="btn outline" asp-controller="Events" asp-action="Index">Back to Events</a>
+</form>
+@section Scripts{<partial name="_ValidationScriptsPartial" />}

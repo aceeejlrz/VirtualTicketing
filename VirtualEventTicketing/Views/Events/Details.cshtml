@@ -1,0 +1,15 @@
+@model VirtualEventTicketing.Models.Event
+@{
+    ViewData["Title"] = Model.Title;
+}
+<h2>@Model.Title</h2>
+<dl class="details">
+    <dt>Category</dt><dd>@Model.Category?.Name</dd>
+    <dt>Date/Time</dt><dd>@Model.StartDateTime.LocalDateTime</dd>
+    <dt>Price</dt><dd>$@Model.TicketPrice</dd>
+    <dt>Available</dt><dd>@Model.AvailableTickets</dd>
+</dl>
+@if (!Model.IsSoldOut)
+{
+    <a class="btn" asp-controller="Purchases" asp-action="Create" asp-route-eventId="@Model.EventId">Buy Tickets</a>
+}

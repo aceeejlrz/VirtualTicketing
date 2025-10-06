@@ -1,0 +1,30 @@
+/* Basic modern styling */
+:root { --bg: #0f172a; --fg: #e2e8f0; --muted:#94a3b8; --brand:#22c55e; --warn:#f59e0b; --danger:#ef4444; }
+*{ box-sizing:border-box; }
+body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu; color:var(--fg); background:linear-gradient(180deg,#0b1020,#0f172a); }
+.container{ max-width:1100px; margin:2rem auto; padding:0 1rem; }
+.nav{ display:flex; gap:1rem; padding:1rem; align-items:center; background:#0b1225; border-bottom:1px solid #1f2940; }
+.nav a{ color:var(--fg); text-decoration:none; opacity:.9; }
+.nav .brand{ font-weight:700; color:var(--brand); }
+.hero{ padding:2rem 0; }
+.hero h1{ margin:0 0 .5rem; font-size:2.2rem; }
+.cta-row{ display:flex; gap:1rem; margin-top:1rem; }
+.btn{ background:var(--brand); color:#052e16; padding:.6rem 1rem; border-radius:.6rem; border:none; text-decoration:none; display:inline-block; }
+.btn.outline{ background:transparent; color:var(--fg); border:1px solid #334155; }
+.btn.danger{ background:var(--danger); color:white; }
+.grid{ width:100%; border-collapse:collapse; background:#0b1225; border:1px solid #1f2940; }
+.grid th,.grid td{ padding:.6rem .8rem; border-bottom:1px solid #1f2940; }
+.grid tr.low{ background:rgba(245,158,11,.08); }
+.details dt{ font-weight:600; }
+.details dd{ margin:0 0 .4rem 0; color:var(--muted); }
+.form{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-bottom:1rem; }
+input, select{ width:100%; padding:.5rem; background:#0a142a; color:var(--fg); border:1px solid #1f2940; border-radius:.4rem; }
+.filters{ display:flex; flex-wrap:wrap; gap:.6rem; align-items:end; margin:1rem 0; }
+.stat{ background:#0b1225; padding:1rem; border-radius:.6rem; }
+.stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1rem; }
+.stat .num{ font-size:1.6rem; font-weight:700; }
+.stat.warn{ outline:2px dashed var(--warn); }
+.summary{ display:flex; gap:1rem; margin:1rem 0; }
+.total{ text-align:right; margin-top:.6rem; font-size:1.1rem; }
+footer{ padding:1rem; text-align:center; color:var(--muted); border-top:1px solid #1f2940; }
+

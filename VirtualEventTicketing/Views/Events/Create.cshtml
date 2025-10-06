@@ -1,0 +1,17 @@
+@model VirtualEventTicketing.Models.Event
+@{
+    ViewData["Title"] = "Create Event";
+}
+<h2>Create Event</h2>
+<form method="post">
+    <div class="form">
+        <label>Title<input asp-for="Title" /></label>
+        <label>Category<select asp-for="CategoryId" asp-items="@(ViewBag.Categories)"></select></label>
+        <label>Date & Time<input asp-for="StartDateTime" type="datetime-local" /></label>
+        <label>Ticket Price<input asp-for="TicketPrice" type="number" step="0.01" /></label>
+        <label>Available Tickets<input asp-for="AvailableTickets" type="number" /></label>
+    </div>
+    <button class="btn" type="submit">Save</button>
+    <a class="btn outline" asp-action="Index">Back</a>
+</form>
+@section Scripts{<partial name="_ValidationScriptsPartial" />}

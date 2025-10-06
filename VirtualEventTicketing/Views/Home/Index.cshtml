@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+<section class="hero">
+    <h1>Host. Discover. Attend.</h1>
+    <p>Manage virtual events, search, and grab tickets — no login needed.</p>
+    <div class="cta-row">
+        <a class="btn" asp-controller="Events" asp-action="Index">Browse Events</a>
+        <a class="btn outline" asp-controller="Purchases" asp-action="Create">Buy Tickets</a>
+    </div>
+</section>
+<section class="stats">
+    <div class="stat">
+        <div class="num">@ViewBag.TotalEvents</div>
+        <div class="lbl">Events</div>
+    </div>
+    <div class="stat">
+        <div class="num">@ViewBag.TotalCategories</div>
+        <div class="lbl">Categories</div>
+    </div>
+    <div class="stat @((int)ViewBag.LowStock > 0 ? "warn" : "")">
+        <div class="num">@ViewBag.LowStock</div>
+        <div class="lbl">Low-stock Events</div>
+    </div>
+</section>

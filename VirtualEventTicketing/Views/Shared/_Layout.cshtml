@@ -1,0 +1,32 @@
+﻿@{
+    var title = ViewData["Title"] as string ?? "Virtual Tickets";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@title - Virtual Tickets</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+<header>
+    <nav class="nav">
+        <a class="brand" asp-controller="Home" asp-action="Index">🎟 Virtual Tickets</a>
+        <a asp-controller="Events" asp-action="Index">Events</a>
+        <a asp-controller="Events" asp-action="Overview">Overview</a>
+        <a asp-controller="Purchases" asp-action="Create">Buy Tickets</a>
+    </nav>
+</header>
+<main class="container">
+    @RenderBody()
+</main>
+<footer>
+    <div>
+        <strong>Group #</strong> — Member(s): <em>Amran Hawaga, Jezrel Dela Cruz</em> • COMP 2139 • Fall 2025
+    </div>
+</footer>
+<script src="~/js/site.js"></script>
+@RenderSection("Scripts", required: false)
+</body>
+</html>

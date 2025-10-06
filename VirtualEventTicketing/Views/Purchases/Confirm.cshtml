@@ -1,0 +1,18 @@
+@model VirtualEventTicketing.Models.Purchase
+@{
+    ViewData["Title"] = "Purchase Confirmation";
+}
+<h2>Purchase Confirmation</h2>
+<p>Thanks, <strong>@Model.GuestName</strong>! Your tickets are confirmed.</p>
+<p>Purchase Date: @Model.PurchaseDate.LocalDateTime</p>
+<table class="grid">
+    <thead><tr><th>Event</th><th>Qty</th><th>Unit Price</th><th>Line Total</th></tr></thead>
+    <tbody>
+    @foreach (var i in Model.Items)
+    {
+        <tr><td>@i.Event!.Title</td><td>@i.Quantity</td><td>$@i.UnitPrice</td><td>$@i.LineTotal</td></tr>
+    }
+    </tbody>
+</table>
+<div class="total">Total Paid: <strong>$@Model.TotalCost</strong></div>
+<a class="btn" asp-controller="Events" asp-action="Index">Back to Events</a>
