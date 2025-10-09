@@ -9,8 +9,10 @@ namespace VirtualEventTicketing.Models
 
         [Required, StringLength(200)]
         public string Title { get; set; } = string.Empty;
-
+        
         [DataType(DataType.DateTime)]
+        // Second Changed
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd, hh:mm tt}", ApplyFormatInEditMode = true)]
         public DateTimeOffset StartDateTime { get; set; }
 
         [Column(TypeName = "numeric(10,2)")]

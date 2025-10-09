@@ -1,0 +1,42 @@
+@model IEnumerable<VirtualEventTicketing.Models.Event>
+@{
+    ViewData["Title"] = "Overview";
+}
+
+<h2>Event Overview</h2>
+
+<div class="summary">
+    <div>Total Events: <strong>@ViewBag.TotalEvents</strong></div>
+    <div>Total Categories: <strong>@ViewBag.TotalCategories</strong></div>
+</div>
+
+<h3>Low Ticket Availability (less than 5)</h3>
+
+@if (Model != null && Model.Any())
+{
+    <table class="grid">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Available</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var e in Model)
+        {
+            <tr class="low">
+                <td>@e.Title</td>
+                <td>@e.Category?.Name</td>
+                <td>@e.StartDateTime.LocalDateTime</td>
+                <td>@e.AvailableTickets</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No low-stock events — everything’s selling well!</p>
+}

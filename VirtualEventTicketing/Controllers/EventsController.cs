@@ -1,3 +1,4 @@
+// FOURTH CHANGED
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,9 +13,9 @@ namespace VirtualEventTicketing.Controllers
         // GET: /Events
         public async Task<IActionResult> Index([FromQuery] EventFilterVm filter)
         {
-            // base query
+            // Initialize base query with category join
             var query = db.Events.Include(e => e.Category).AsQueryable();
-
+            
             if (!string.IsNullOrWhiteSpace(filter.SearchTitle))
             {
                 var term = filter.SearchTitle.Trim().ToLower();
@@ -34,7 +35,7 @@ namespace VirtualEventTicketing.Controllers
                     query = query.Where(e => e.AvailableTickets <= 0);
             }
 
-            // Sorting
+            // Apply sorting based on filter
             filter.SortBy = string.IsNullOrEmpty(filter.SortBy) ? "date" : filter.SortBy;
             var desc = filter.SortDesc;
             query = filter.SortBy.ToLower() switch
@@ -44,13 +45,13 @@ namespace VirtualEventTicketing.Controllers
                 _ => desc ? query.OrderByDescending(e => e.StartDateTime) : query.OrderBy(e => e.StartDateTime)
             };
 
-            // Dropdown categories
+            // Load categories for dropdown
             filter.Categories = await db.Categories
                 .OrderBy(c => c.Name)
                 .Select(c => new SelectListItem { Value = c.CategoryId.ToString(), Text = c.Name })
                 .ToListAsync();
-
-            ViewBag.Filter = filter; // pass filter back for UI
+            
+            ViewBag.Filter = filter;
             var events = await query.AsNoTracking().ToListAsync();
             return View(events);
         }
@@ -64,7 +65,6 @@ namespace VirtualEventTicketing.Controllers
                 .Where(e => e.AvailableTickets < 5)
                 .OrderBy(e => e.AvailableTickets)
                 .ToListAsync();
-
             ViewBag.TotalEvents = totalEvents;
             ViewBag.TotalCategories = totalCategories;
             return View(lowStockEvents);
@@ -88,6 +88,8 @@ namespace VirtualEventTicketing.Controllers
                 return View(model);
             }
 
+            // Convert date to UTC
+            model.StartDateTime = model.StartDateTime.ToUniversalTime();
             db.Events.Add(model);
             await db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -113,7 +115,7 @@ namespace VirtualEventTicketing.Controllers
                 ViewBag.Categories = await GetCategoriesAsync();
                 return View(model);
             }
-
+            
             db.Entry(model).State = EntityState.Modified;
             await db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -149,6 +151,7 @@ namespace VirtualEventTicketing.Controllers
             return View(ev);
         }
 
+        // Retrieve categories for dropdown
         private async Task<IEnumerable<SelectListItem>> GetCategoriesAsync()
         {
             return await db.Categories.OrderBy(c => c.Name)

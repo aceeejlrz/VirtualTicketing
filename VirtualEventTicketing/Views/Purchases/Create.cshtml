@@ -34,7 +34,10 @@
             }
             </tbody>
         </table>
-        <div class="total">Total: <strong>$@Model.Total</strong></div>
+        @* thrid changed *@
+        <div class="total">
+            Total: $@(Model.Items?.Sum(i => i.UnitPrice * i.Quantity) ?? Model.UnitPrice * Model.Quantity)
+        </div>
     </fieldset>
 
     <button class="btn" type="submit">Confirm Purchase</button>

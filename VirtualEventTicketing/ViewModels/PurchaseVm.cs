@@ -14,7 +14,9 @@ namespace VirtualEventTicketing.ViewModels
     {
         [Required] public string GuestName { get; set; } = string.Empty;
         [Required, EmailAddress] public string GuestEmail { get; set; } = string.Empty;
-        public List<PurchaseItemVm> Items { get; set; } = new();
-        public decimal Total => Items.Sum(i => i.UnitPrice * i.Quantity);
+        public List<PurchaseItemVm>? Items { get; set; } // Made nullable to address CS8618
+        public decimal Total => Items?.Sum(i => i.UnitPrice * i.Quantity) ?? 0; // Safe null handling
+        public decimal UnitPrice { get; set; } // Added to match view
+        public int Quantity { get; set; } = 1; // Added to match view
     }
 }

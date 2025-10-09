@@ -11,7 +11,7 @@ namespace VirtualEventTicketing.Controllers
         // GET: /Purchases/Create?eventId=5 (single) or none (multi-select from list)
         public async Task<IActionResult> Create(int? eventId)
         {
-            var vm = new PurchaseVm();
+            var vm = new PurchaseVm { Items = new List<PurchaseItemVm>() };
             if (eventId.HasValue)
             {
                 var ev = await db.Events.FindAsync(eventId.Value);
