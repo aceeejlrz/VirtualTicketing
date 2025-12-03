@@ -1,0 +1,29 @@
+@model IEnumerable<VirtualEventTicketing.Models.Event>
+
+<div class="card-grid">
+@foreach (var e in Model)
+{
+    <div class="card">
+        <h3>@e.Title</h3>
+        <p class="text-muted">@e.Category?.Name • @e.StartDateTime.LocalDateTime</p>
+        <p>
+            @if (e.IsSoldOut)
+            {
+                <span class="text-danger">Sold out</span>
+            }
+            else
+            {
+                <span>$@e.TicketPrice</span>
+                <span class="text-muted">(@e.AvailableTickets left)</span>
+            }
+        </p>
+        <div class="d-flex gap-2">
+            <a class="btn btn-sm btn-outline-primary" asp-controller="Events" asp-action="Details" asp-route-id="@e.EventId">Details</a>
+            @if (!e.IsSoldOut)
+            {
+                <button type="button" class="btn btn-sm btn-primary js-add-to-cart" data-event-id="@e.EventId">Add to cart</button>
+            }
+        </div>
+    </div>
+}
+</div>

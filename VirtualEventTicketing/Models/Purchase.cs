@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace VirtualEventTicketing.Models
 {
@@ -14,6 +15,9 @@ namespace VirtualEventTicketing.Models
         public string GuestEmail { get; set; } = string.Empty;
 
         public decimal TotalCost { get; set; }
+
+        public string? UserId { get; set; }
+        public ApplicationUser? User { get; set; }
 
         public ICollection<PurchaseItem> Items { get; set; } = new List<PurchaseItem>();
     }

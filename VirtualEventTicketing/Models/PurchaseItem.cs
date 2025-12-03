@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VirtualEventTicketing.Models
@@ -19,5 +20,10 @@ namespace VirtualEventTicketing.Models
 
         [Column(TypeName = "numeric(10,2)")]
         public decimal LineTotal { get; set; }
+
+        public int? Rating { get; set; }
+
+        [StringLength(260)]
+        public string? QrCodePath { get; set; }
     }
 }

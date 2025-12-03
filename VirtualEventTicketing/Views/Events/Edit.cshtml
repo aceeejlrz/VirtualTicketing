@@ -3,15 +3,27 @@
     ViewData["Title"] = "Edit Event";
 }
 <h2>Edit Event</h2>
-<form method="post">
+<form method="post" asp-action="Edit" asp-route-id="@Model.EventId">
+    @Html.AntiForgeryToken()
     <input type="hidden" asp-for="EventId" />
+    
     <div class="form">
         <label>Title<input asp-for="Title" /></label>
+        <span asp-validation-for="Title" class="text-danger"></span>
+        
         <label>Category<select asp-for="CategoryId" asp-items="@(ViewBag.Categories)"></select></label>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+        
         <label>Date & Time<input asp-for="StartDateTime" type="datetime-local" /></label>
+        <span asp-validation-for="StartDateTime" class="text-danger"></span>
+        
         <label>Ticket Price<input asp-for="TicketPrice" type="number" step="0.01" /></label>
+        <span asp-validation-for="TicketPrice" class="text-danger"></span>
+        
         <label>Available Tickets<input asp-for="AvailableTickets" type="number" /></label>
+        <span asp-validation-for="AvailableTickets" class="text-danger"></span>
     </div>
+    
     <button class="btn" type="submit">Update</button>
     <a class="btn outline" asp-action="Index">Back</a>
 </form>

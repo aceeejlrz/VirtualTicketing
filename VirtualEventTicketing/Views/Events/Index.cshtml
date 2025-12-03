@@ -4,7 +4,8 @@
     ViewData["Title"] = "Events";
     var filter = (EventFilterVm)ViewBag.Filter;
 }
-<h2>Events</h2>
+<h2 class="vt-page-title">Explore Events</h2>
+<div class="vt-card vt-filter-card">
 <form method="get" class="filters">
     <input type="text" name="SearchTitle" value="@filter?.SearchTitle" placeholder="Search title" />
     <label>From <input type="datetime-local" name="From" value="@filter?.From?.UtcDateTime.ToString("yyyy-MM-ddTHH:mm")" /></label>
@@ -27,11 +28,16 @@
         <option value="price" selected="@(filter?.SortBy=="price")">Sort by price</option>
     </select>
     <label><input type="checkbox" name="SortDesc" value="true" @(filter?.SortDesc==true?"checked":"") /> Desc</label>
-    <button class="btn" type="submit">Apply</button>
-    <a class="btn outline" asp-action="Create">Add Event</a>
+    <button class="btn vt-btn" type="submit">Apply</button>
+    @if (User.IsInRole("Admin") || User.IsInRole("Organizer"))
+    {
+        <a class="btn outline vt-btn" asp-action="Create">Add Event</a>
+    }
 </form>
+</div>
 
-<table class="grid">
+<div class="vt-card vt-table-card">
+<table class="grid vt-card-table vt-card-grid-table">
     <thead>
         <tr>
             <th>Title</th>
@@ -42,22 +48,29 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
+        <tbody>
         @foreach (var e in Model)
         {
-            <tr class="@(e.AvailableTickets < 5 ? "low" : "")">
-                <td><a asp-action="Details" asp-route-id="@e.EventId">@e.Title</a></td>
+            <tr class="vt-event-row @(e.AvailableTickets < 5 ? "low" : "")">
+                <td class="vt-event-title"><a asp-action="Details" asp-route-id="@e.EventId">@e.Title</a></td>
                 <td>@e.Category?.Name</td>
                 <td>@e.StartDateTime.LocalDateTime</td>
                 <td>$@e.TicketPrice</td>
-                <td>@e.AvailableTickets</td>
-                <td class="actions">
-                    <a asp-action="Edit" asp-route-id="@e.EventId">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@e.EventId">Delete</a>
-                    @if(!e.IsSoldOut){<a asp-controller="Purchases" asp-action="Create" asp-route-eventId="@e.EventId">Buy</a>}
+                <td>
+                    <span class="vt-badge">@e.AvailableTickets left</span>
+                </td>
+                <td class="actions vt-card-footer">
+                    @if (User.IsInRole("Admin") || User.IsInRole("Organizer"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@e.EventId">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@e.EventId">Delete</a>
+                    }
+                    @if(!e.IsSoldOut){
+                        <button type="button" class="btn btn-sm js-add-to-cart" data-event-id="@e.EventId">Add to cart</button>
+                    }
                 </td>
             </tr>
         }
-    </tbody>
-</table>
-
+        </tbody>
+    </table>
+</div>

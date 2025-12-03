@@ -8,35 +8,59 @@ a.navbar-brand {
 }
 
 a {
-  color: #0077cc;
+  color: #0088dd;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0066bb;
 }
 
 .btn-primary {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #4a9eff;
+  border-color: #3a8eef;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #3a8eef;
+  border-color: #2a7edf;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: #4a9eff;
+  border-color: #3a8eef;
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid #e8e8e8;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e8e8e8;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .03);
 }
 
 button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
+  transition: all 0.3s ease;
+}
+
+button.accept-policy:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
 }
 
 .footer {
@@ -45,4 +69,6 @@ button.accept-policy {
   width: 100%;
   white-space: nowrap;
   line-height: 60px;
+  background-color: #f8f9fa;
+  color: #6c757d;
 }

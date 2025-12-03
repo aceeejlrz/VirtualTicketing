@@ -1,6 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualEventTicketing", "VirtualEventTicketing\VirtualEventTicketing.csproj", "{52D75044-F0D8-4C5B-B623-48E2E0A62B1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualEventTicketing.Tests", "VirtualEventTicketing.Tests\VirtualEventTicketing.Tests.csproj", "{1B123BFC-B9B0-4809-9CFB-22D5E384D65E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +15,9 @@ Global
 		{52D75044-F0D8-4C5B-B623-48E2E0A62B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52D75044-F0D8-4C5B-B623-48E2E0A62B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52D75044-F0D8-4C5B-B623-48E2E0A62B1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B123BFC-B9B0-4809-9CFB-22D5E384D65E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B123BFC-B9B0-4809-9CFB-22D5E384D65E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B123BFC-B9B0-4809-9CFB-22D5E384D65E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B123BFC-B9B0-4809-9CFB-22D5E384D65E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

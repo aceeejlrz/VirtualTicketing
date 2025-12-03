@@ -16,3 +16,22 @@
 </table>
 <div class="total">Total Paid: <strong>$@Model.TotalCost</strong></div>
 <a class="btn" asp-controller="Events" asp-action="Index">Back to Events</a>
+
+<div class="modal fade vt-modal-dark" id="purchaseSuccessModal" tabindex="-1" aria-hidden="true" data-show="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thank you for your purchase!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <p>Your tickets are confirmed. Enjoy the event!</p>
+                <div id="confetti-canvas" style="width:100%;height:200px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+}

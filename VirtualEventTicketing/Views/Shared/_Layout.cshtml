@@ -7,6 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@title - Virtual Tickets</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
@@ -15,7 +16,21 @@
         <a class="brand" asp-controller="Home" asp-action="Index">🎟 Virtual Tickets</a>
         <a asp-controller="Events" asp-action="Index">Events</a>
         <a asp-controller="Events" asp-action="Overview">Overview</a>
-        <a asp-controller="Purchases" asp-action="Create">Buy Tickets</a>
+        <a asp-controller="Purchases" asp-action="Create">Buy Tickets <span id="cartBadge" class="badge bg-success ms-1">0</span></a>
+        <a asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+
+        @if (User.Identity?.IsAuthenticated ?? false)
+        {
+            <span class="text-muted">Hello, @User.Identity!.Name</span>
+            <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline ms-2">
+                <button type="submit" class="btn btn-sm btn-outline-secondary">Logout</button>
+            </form>
+        }
+        else
+        {
+            <a asp-controller="Account" asp-action="Login">Login</a>
+            <a asp-controller="Account" asp-action="Register">Register</a>
+        }
     </nav>
 </header>
 <main class="container">
@@ -26,6 +41,8 @@
         <strong>Group #100</strong> — Member(s): <em>Amran Hawaga, Jezrel Dela Cruz, Jared Duldulao</em> • COMP 2139 • Fall 2025
     </div>
 </footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js"></script>
 @RenderSection("Scripts", required: false)
 </body>

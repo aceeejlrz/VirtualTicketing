@@ -28,7 +28,7 @@
                         <input type="hidden" asp-for="Items[@i].Title" />
                     </td>
                     <td>$@Model.Items[i].UnitPrice<input type="hidden" asp-for="Items[@i].UnitPrice" /></td>
-                    <td><input asp-for="Items[@i].Quantity" type="number" min="1" /></td>
+                    <td><input asp-for="Items[@i].Quantity" type="number" min="1" class="js-cart-qty" data-event-id="@Model.Items[i].EventId" /></td>
                     <td>$@(Model.Items[i].UnitPrice * Model.Items[i].Quantity)</td>
                 </tr>
             }
@@ -36,7 +36,7 @@
         </table>
         @* thrid changed *@
         <div class="total">
-            Total: $@(Model.Items?.Sum(i => i.UnitPrice * i.Quantity) ?? Model.UnitPrice * Model.Quantity)
+            Total: $<span id="cartTotal">@(Model.Items?.Sum(i => i.UnitPrice * i.Quantity) ?? Model.UnitPrice * Model.Quantity)</span>
         </div>
     </fieldset>
 
