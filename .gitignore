@@ -1,17 +1,6 @@
-# IDE config
-.idea/
-
-# macOS junk
-*.DS_Store
-
-# Zip archives
+bin/
+obj/
 *.zip
-
-# Build output
-**/bin/
-**/obj/
-
-# Runtime logs & uploads
-VirtualEventTicketing/wwwroot/logs/
-VirtualEventTicketing/wwwroot/uploads/
-
+packages/
+*.user
+.vs/
