@@ -1,5 +1,17 @@
-bin/
-obj/
-/packages/
-riderModule.iml
-/_ReSharper.Caches/
+# IDE config
+.idea/
+
+# macOS junk
+*.DS_Store
+
+# Zip archives
+*.zip
+
+# Build output
+**/bin/
+**/obj/
+
+# Runtime logs & uploads
+VirtualEventTicketing/wwwroot/logs/
+VirtualEventTicketing/wwwroot/uploads/
+
