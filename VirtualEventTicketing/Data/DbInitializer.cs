@@ -35,6 +35,24 @@ namespace VirtualEventTicketing.Data
                 await userManager.AddToRoleAsync(adminUser, "Admin");
             }
 
+            // Seed default organizer user
+            var organizerEmail = "organizer@virtualtickets.local";
+            var organizerUser = await userManager.FindByEmailAsync(organizerEmail);
+            if (organizerUser == null)
+            {
+                organizerUser = new ApplicationUser
+                {
+                    UserName = organizerEmail,
+                    Email = organizerEmail,
+                    EmailConfirmed = true,
+                    FullName = "Default Organizer"
+                };
+
+                await userManager.CreateAsync(organizerUser, "Organizer#12345");
+                await userManager.AddToRoleAsync(organizerUser, "Organizer");
+                await userManager.AddToRoleAsync(organizerUser, "Attendee");
+            }
+
             if (await db.Categories.AnyAsync()) return; // already seeded
 
             var categories = new List<Category>
