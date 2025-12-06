@@ -129,6 +129,35 @@ main.container,
     box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.4);
 }
 
+.nav-user {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.nav-user-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.9rem;
+    border-radius: 9999px;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(59, 130, 246, 0.7);
+    box-shadow: 0 10px 28px rgba(37, 99, 235, 0.55);
+    font-size: var(--text-sm);
+    color: #e5e7eb;
+}
+
+.nav-user-icon {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.nav-user-name {
+    font-weight: 600;
+    color: #bfdbfe;
+}
+
 @media (max-width: 768px) {
     .nav {
         gap: var(--space-md);
@@ -467,6 +496,13 @@ tr:last-child td {
     margin-bottom: 0.75rem;
 }
 
+.vt-auth-message {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: #e5e7eb;
+    margin-bottom: 1rem;
+}
+
 /* Virtual Tickets – generic card */
 .vt-card {
     background: var(--bg-secondary);
@@ -478,6 +514,97 @@ tr:last-child td {
 
 .vt-card + .vt-card {
     margin-top: 1.5rem;
+}
+
+.vt-auth-card {
+    max-width: 520px;
+    margin: 1.5rem auto 0 auto;
+}
+
+@media (max-width: 640px) {
+    .vt-auth-card {
+        max-width: 100%;
+    }
+}
+
+/* Dashboard tabs and profile card */
+.vt-dashboard-tabs {
+    margin-top: 0.5rem;
+    border-bottom: none;
+    background: rgba(15, 23, 42, 0.95);
+    border-radius: 9999px;
+    padding: 0.25rem;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    box-shadow: 0 18px 40px var(--shadow);
+}
+
+.vt-dashboard-tabs .nav-link {
+    border: none;
+    border-radius: 9999px;
+    color: var(--muted);
+    padding: 0.45rem 1.2rem;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vt-dashboard-tabs .nav-link:hover {
+    color: #e5e7eb;
+}
+
+.vt-dashboard-tabs .nav-link.active {
+    background: var(--brand);
+    color: #f9fafb;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.6);
+}
+
+.vt-profile-card .form-label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: #bfdbfe;
+}
+
+.vt-profile-card .form-control {
+    background: #02081f;
+    border-radius: 0.6rem;
+    border: 1px solid rgba(148, 163, 184, 0.8);
+    color: var(--fg);
+}
+
+.vt-profile-card .form-control:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.7);
+}
+
+/* Guest purchase name/email layout */
+.vt-guest-info {
+    margin-bottom: 1.5rem;
+}
+
+.vt-guest-info label {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: var(--text-sm);
+    color: #9ca3af;
+    margin-right: 1.75rem;
+}
+
+.vt-guest-input {
+    width: 260px;
+    max-width: 100%;
+    height: 44px;
+    background: #02081f;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    padding: 0.35rem 0.75rem;
+    color: var(--fg);
+}
+
+.vt-guest-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.7);
 }
 
 /* Events filter panel */

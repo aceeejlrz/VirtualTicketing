@@ -21,10 +21,15 @@
 
         @if (User.Identity?.IsAuthenticated ?? false)
         {
-            <span class="text-muted">Hello, @User.Identity!.Name</span>
-            <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline ms-2">
-                <button type="submit" class="btn btn-sm btn-outline-secondary">Logout</button>
-            </form>
+            <div class="nav-user">
+                <span class="nav-user-pill">
+                    <span class="nav-user-icon">👤</span>
+                    <span class="nav-user-name">@User.Identity!.Name</span>
+                </span>
+                <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline ms-2">
+                    <button type="submit" class="btn btn-sm btn-outline-secondary">Logout</button>
+                </form>
+            </div>
         }
         else
         {
